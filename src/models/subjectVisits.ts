@@ -1,6 +1,4 @@
-
-
-import mongoose, { model, Schema } from 'mongoose';
+import mongoose, { model, Schema } from "mongoose";
 
 // {
 //     "_id": {
@@ -17,28 +15,31 @@ import mongoose, { model, Schema } from 'mongoose';
 //     "isLastVisit": true
 //   }
 
-
 export interface ISubjectVisit {
-    protocolId: Schema.Types.ObjectId,
-    subjectNumber: Schema.Types.String,
-    visitDate: Schema.Types.Date,
-    visitType: Schema.Types.String,
-    isLastVisit: Schema.Types.Boolean
+  protocolId: Schema.Types.ObjectId;
+  subjectNumber: Schema.Types.String;
+  visitDate: Schema.Types.Date;
+  visitType: Schema.Types.String;
+  isLastVisit: Schema.Types.Boolean;
 }
 
 export interface ISubjectVisitList {
-    subjectVisits?: [ISubjectVisit],
-    totalRecords?: number 
+  subjectVisits?: [ISubjectVisit];
+  totalRecords?: number;
 }
 
-export const subjectVIsitSchema = new Schema<ISubjectVisit> ({
-    protocolId: Schema.Types.ObjectId,
-    subjectNumber: Schema.Types.String,
-    visitDate: Schema.Types.Date,
-    visitType: Schema.Types.String,
-    isLastVisit: Schema.Types.String
-})
+export const subjectVIsitSchema = new Schema<ISubjectVisit>({
+  protocolId: Schema.Types.ObjectId,
+  subjectNumber: Schema.Types.String,
+  visitDate: Schema.Types.Date,
+  visitType: Schema.Types.String,
+  isLastVisit: Schema.Types.Boolean,
+});
 
-const SubjectVisitModel = model<ISubjectVisit>('subjectVisits', subjectVIsitSchema, 'subjectVisits');
+const SubjectVisitModel = model<ISubjectVisit>(
+  "subjectVisits",
+  subjectVIsitSchema,
+  "subjectVisits"
+);
 
-export default SubjectVisitModel
+export default SubjectVisitModel;
