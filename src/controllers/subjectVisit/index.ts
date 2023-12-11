@@ -4,8 +4,9 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-    const responseData = await SubjectVisitsService.getAllSubjectVisits();
+router.get("/:tenantId/", async (req, res) => {
+    const tenantId = req.params.tenantId;
+    const responseData = await SubjectVisitsService.getAllSubjectVisitsForTenant(tenantId);
     let retStatus = HTTPStatusCode.OK;
     if(responseData.totalRecords == 0){
         retStatus = HTTPStatusCode.NOT_FOUND;

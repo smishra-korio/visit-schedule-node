@@ -1,6 +1,6 @@
 
 
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 // {
 //     "_id": {
@@ -27,11 +27,11 @@ export interface ISubjectVisit {
 }
 
 export interface ISubjectVisitList {
-    subjectVisits?: [ISubjectVisit],
+    subjectVisits?: ISubjectVisit[],
     totalRecords?: number 
 }
 
-export const subjectVIsitSchema = new Schema<ISubjectVisit> ({
+export const subjectVisitSchema = new Schema<ISubjectVisit> ({
     protocolId: Schema.Types.ObjectId,
     subjectNumber: Schema.Types.String,
     visitDate: Schema.Types.Date,
@@ -39,6 +39,6 @@ export const subjectVIsitSchema = new Schema<ISubjectVisit> ({
     isLastVisit: Schema.Types.String
 })
 
-const SubjectVisitModel = model<ISubjectVisit>('subjectVisits', subjectVIsitSchema, 'subjectVisits');
+const SubjectVisitModel = model<ISubjectVisit>('subjectVisits', subjectVisitSchema, 'subjectVisits');
 
 export default SubjectVisitModel
